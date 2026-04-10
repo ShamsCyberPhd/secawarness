@@ -1,0 +1,77 @@
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 10% 10%, #182137 0%, #090b12 45%, #06080f 100%);
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(7, 10, 18, 0.72), rgba(7, 10, 18, 0.8)),
+    url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.03);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(110, 231, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 231, 255, 0.08) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+  opacity: 0.45;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.2s ease-out both;
+}
+
+.glass-card {
+  background: linear-gradient(140deg, rgba(25, 33, 54, 0.68), rgba(12, 16, 28, 0.82));
+  border: 1px solid rgba(143, 155, 179, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.section-grid {
+  position: relative;
+}
+
+.section-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(143, 155, 179, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143, 155, 179, 0.04) 1px, transparent 1px);
+  background-size: 42px 42px;
+  pointer-events: none;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
