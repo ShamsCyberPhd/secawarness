@@ -6,6 +6,13 @@ const pillars = [
   'Metrics and reporting'
 ];
 
+const scenario = {
+  title: 'Executive Wire Request',
+  context: 'CFO requests urgent funds transfer via email.',
+  choices: ['Approve immediately', 'Verify via secondary channel', 'Escalate to security'],
+  correct: 1
+};
+
 const weeklyCards = [
   {
     title: 'Weekly scenarios',
@@ -22,9 +29,9 @@ const weeklyCards = [
 ];
 
 const metrics = [
-  { label: 'Click rate', value: '4.8%', trend: '↓ 32% QoQ' },
-  { label: 'Report rate', value: '71%', trend: '↑ 24% QoQ' },
-  { label: 'Repeat clickers', value: '1.7%', trend: '↓ 43% QoQ' }
+  { label: 'Human Risk Exposure', value: 'Low', trend: '↓ improving' },
+  { label: 'Decision Accuracy Rate', value: '71%', trend: '↑ improving' },
+  { label: 'Behavioral Drift Index', value: '1.7%', trend: '↓ controlled' }
 ];
 
 const dashboard = [
@@ -88,6 +95,12 @@ function App() {
           </blockquote>
         </Section>
 
+        <Section id="threat" subtitle="Security Reality" title="Human Behavior is the Primary Attack Surface">
+          <blockquote className="glass-card rounded-2xl p-8 md:p-10 text-xl md:text-2xl font-medium leading-relaxed">
+            “Adversaries don’t break systems — they influence people into breaking them.”
+          </blockquote>
+        </Section>
+
         <Section id="framework" subtitle="Transformational Security Framework" title="Five Integrated Pillars">
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             {pillars.map((item) => (
@@ -98,8 +111,12 @@ function App() {
           </div>
         </Section>
 
-        <Section id="game-theory" subtitle="Weekly Game Theory" title="Security Is Not a Trivia Game">
-          <div className="grid md:grid-cols-3 gap-5">
+        <Section
+          id="game-theory"
+          subtitle="Weekly Game Theory"
+          title="Security awareness is not knowledge recall — it is decision-making under uncertainty."
+        >
+          <div className="grid md:grid-cols-3 gap-5 mb-6">
             {weeklyCards.map((card) => (
               <article key={card.title} className="glass-card rounded-xl p-7">
                 <h3 className="text-xl font-semibold mb-4">{card.title}</h3>
@@ -107,6 +124,25 @@ function App() {
               </article>
             ))}
           </div>
+          <article className="glass-card rounded-xl p-7">
+            <p className="text-xs uppercase tracking-[0.2em] text-steel mb-3">Featured Scenario</p>
+            <h3 className="text-2xl font-semibold mb-3">{scenario.title}</h3>
+            <p className="text-steel mb-5">{scenario.context}</p>
+            <div className="grid gap-3 md:grid-cols-3">
+              {scenario.choices.map((choice, idx) => (
+                <div
+                  key={choice}
+                  className={`rounded-lg border p-4 text-sm ${
+                    idx === scenario.correct
+                      ? 'border-neon/60 bg-neon/10 text-neon'
+                      : 'border-steel/30 bg-slateblue/30 text-slate-200'
+                  }`}
+                >
+                  {choice}
+                </div>
+              ))}
+            </div>
+          </article>
         </Section>
 
         <Section id="phishing" subtitle="Phishing Program" title="Operational Resilience Metrics">
@@ -147,6 +183,12 @@ function App() {
               </div>
             ))}
           </div>
+        </Section>
+
+        <Section id="culture" subtitle="Security Culture" title="From Awareness to Behavioral Identity">
+          <blockquote className="glass-card rounded-2xl p-8 md:p-10 text-xl md:text-2xl font-medium leading-relaxed">
+            “The goal is not compliance — it is instinctive secure behavior at scale.”
+          </blockquote>
         </Section>
 
         <section className="py-24">

@@ -53,15 +53,33 @@ body {
 
 .section-grid {
   position: relative;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
 .section-grid::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(143, 155, 179, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(143, 155, 179, 0.04) 1px, transparent 1px);
-  background-size: 42px 42px;
+  background-image: repeating-linear-gradient(
+    -30deg,
+    rgba(110, 231, 255, 0.05),
+    rgba(110, 231, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 22px
+  );
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.section-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(110, 231, 255, 0.12), transparent 55%);
+  animation: softGlow 8s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
@@ -73,5 +91,16 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes softGlow {
+  from {
+    opacity: 0.35;
+    transform: translate3d(-2%, 0, 0);
+  }
+  to {
+    opacity: 0.65;
+    transform: translate3d(2%, 1%, 0);
   }
 }
