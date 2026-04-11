@@ -3,6 +3,10 @@ const html = htm.bind(React.createElement);
 const pillars = [
   'Behavior change',
   'Role-based training',
+const pillars = [
+  'Behavior change',
+  'Role-based
+  training',
   'Phishing resilience',
   'Security culture',
   'Metrics and reporting'
@@ -20,6 +24,25 @@ const weeklyCards = [
   {
     title: 'Vendor Invoice Change',
     text: 'Supplier payment details updated unexpectedly; validate with known contacts and controls.'
+const scenario = {
+  title: 'Executive Wire Request',
+  context: 'CFO requests urgent funds transfer via email.',
+  choices: ['Approve immediately', 'Verify via secondary channel', 'Escalate to security'],
+  correct: 1
+};
+
+const weeklyCards = [
+  {
+    title: 'Weekly scenarios',
+    text: 'Real-world business context simulations designed for decisions under pressure.'
+  },
+  {
+    title: 'Decision-based learning',
+    text: 'Learners navigate branching choices to understand risk tradeoffs and consequences.'
+  },
+  {
+    title: 'Behavioral outcomes',
+    text: 'Each challenge maps to measurable shifts in reporting, escalation, and secure habits.'
   }
 ];
 
@@ -43,22 +66,75 @@ const timeline = [
 
 function App() {
   return html`
+  {
+    phase: '30 Days',
+    plan: 'Assess baseline maturity, stakeholder map, and risk-prioritized awareness gaps.'
+  },
+  {
+    phase: '60 Days',
+    plan: 'Launch role-based pilots, targeted phishing tracks, and outcome reporting cadence.'
+  },
+  {
+    phase: '90 Days',
+    plan: 'Scale high-performing interventions, align to business KPIs, and embed governance.'
+  }
+];
+
+function App() {
+  return (
     <div>
       <header className="section border-b border-gray-200 bg-white">
         <div className="container">
           <p className="text-xs uppercase tracking-widest text-gray-500">Fitch Group Candidate Portfolio</p>
           <h1 className="text-4xl md:text-5xl font-semibold mt-4">Associate Director, Security Awareness</h1>
+
+          <h1 className="text-4xl md:text-5xl font-semibold mt-4">Associate Director, Security Awareness</h1>
+
           <p className="mt-4 text-lg text-gray-600 max-w-2xl">
             Transformational security awareness program focused on behavioral risk reduction, education, and measurable
             culture change.
           </p>
           <a href="#philosophy" className="inline-block mt-8 text-blue-700 font-medium">Explore Strategy →</a>
+
+          <a href="#philosophy" className="inline-block mt-8 text-blue-700 font-medium">
+            Explore Strategy →
+function Section({ id, title, subtitle, children }) {
+  return (
+    <section id={id} className="py-20 section-grid">
+      <div className="mx-auto max-w-6xl px-6 relative z-10">
+        <p className="text-xs uppercase tracking-[0.28em] text-steel/80 mb-3">{subtitle}</p>
+        <h2 className="text-3xl md:text-4xl font-semibold mb-10">{title}</h2>
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <header className="hero flex items-center">
+        <div className="hero-content mx-auto max-w-6xl px-6 py-32 w-full">
+          <p className="text-steel uppercase tracking-[0.3em] text-xs md:text-sm mb-6">Fitch Group Candidate Profile</p>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight max-w-4xl">
+            Associate Director Security Awareness
+          </h1>
+          <p className="mt-8 text-lg md:text-2xl text-steel max-w-2xl">
+            Transformational Security Awareness Strategy
+          </p>
+          <a
+            href="#philosophy"
+            className="inline-block mt-12 px-7 py-3 rounded-full border border-steel/30 text-sm uppercase tracking-[0.16em] hover:border-neon/60 hover:text-neon transition"
+          >
+            Explore Strategy
+          </a>
         </div>
       </header>
 
       <section id="philosophy" className="section">
         <div className="container">
           <h2 className="text-2xl font-semibold mb-6">Executive Philosophy</h2>
+
           <div className="card">
             <p className="text-xl text-gray-700 leading-relaxed">
               “Security awareness is not about training people — it's about transforming behavior.”
@@ -72,6 +148,13 @@ function App() {
           <h2 className="text-2xl font-semibold mb-6">Security Awareness Framework</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             ${pillars.map((p) => html`<div className="card" key=${p}><p className="font-medium">${p}</p></div>`)}
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {pillars.map((p) => (
+              <div className="card" key={p}>
+                <p className="font-medium">{p}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -83,6 +166,14 @@ function App() {
             ${weeklyCards.map(
               (c) => html`<div className="card" key=${c.title}><h3 className="font-semibold mb-2">${c.title}</h3><p className="text-gray-600 text-sm">${c.text}</p></div>`
             )}
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {weeklyCards.map((c) => (
+              <div className="card" key={c.title}>
+                <h3 className="font-semibold mb-2">{c.title}</h3>
+                <p className="text-gray-600 text-sm">{c.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -94,6 +185,15 @@ function App() {
             ${metrics.map(
               (m) => html`<div className="card" key=${m.label}><p className="text-sm text-gray-500">${m.label}</p><p className="text-3xl font-semibold mt-2">${m.value}</p><p className="text-blue-700 text-sm mt-1">${m.trend}</p></div>`
             )}
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {metrics.map((m) => (
+              <div className="card" key={m.label}>
+                <p className="text-sm text-gray-500">{m.label}</p>
+                <p className="text-3xl font-semibold mt-2">{m.value}</p>
+                <p className="text-blue-700 text-sm mt-1">{m.trend}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -105,6 +205,15 @@ function App() {
             ${dashboard.map(
               (d) => html`<div className="card" key=${d.title}><h3 className="font-medium">${d.title}</h3><p className="text-3xl font-semibold mt-3">${d.value}</p><p className="text-gray-500 text-sm mt-2">${d.detail}</p></div>`
             )}
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {dashboard.map((d) => (
+              <div className="card" key={d.title}>
+                <h3 className="font-medium">{d.title}</h3>
+                <p className="text-3xl font-semibold mt-3">{d.value}</p>
+                <p className="text-gray-500 text-sm mt-2">{d.detail}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -128,3 +237,135 @@ if (!rootElement) {
   throw new Error('Root element #root not found');
 }
 ReactDOM.createRoot(rootElement).render(html`<${App} />`);
+
+          <div className="space-y-4">
+            {timeline.map((t) => (
+              <div className="card" key={t.phase}>
+                <p className="font-semibold text-blue-700">{t.phase}</p>
+                <p className="text-gray-600 mt-2">{t.plan}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <main>
+        <Section id="philosophy" subtitle="Executive Philosophy" title="Security Leadership Vision">
+          <blockquote className="glass-card rounded-2xl p-8 md:p-10 text-2xl md:text-3xl font-medium leading-relaxed">
+            “Security awareness is not about training people — it's about transforming behavior.”
+          </blockquote>
+        </Section>
+
+        <Section id="threat" subtitle="Security Reality" title="Human Behavior is the Primary Attack Surface">
+          <blockquote className="glass-card rounded-2xl p-8 md:p-10 text-xl md:text-2xl font-medium leading-relaxed">
+            “Adversaries don’t break systems — they influence people into breaking them.”
+          </blockquote>
+        </Section>
+
+        <Section id="framework" subtitle="Transformational Security Framework" title="Five Integrated Pillars">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {pillars.map((item) => (
+              <div key={item} className="glass-card rounded-xl p-6 min-h-32 flex items-end">
+                <p className="text-lg font-medium">{item}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section
+          id="game-theory"
+          subtitle="Weekly Game Theory"
+          title="Security awareness is not knowledge recall — it is decision-making under uncertainty."
+        >
+          <div className="grid md:grid-cols-3 gap-5 mb-6">
+            {weeklyCards.map((card) => (
+              <article key={card.title} className="glass-card rounded-xl p-7">
+                <h3 className="text-xl font-semibold mb-4">{card.title}</h3>
+                <p className="text-steel leading-relaxed">{card.text}</p>
+              </article>
+            ))}
+          </div>
+          <article className="glass-card rounded-xl p-7">
+            <p className="text-xs uppercase tracking-[0.2em] text-steel mb-3">Featured Scenario</p>
+            <h3 className="text-2xl font-semibold mb-3">{scenario.title}</h3>
+            <p className="text-steel mb-5">{scenario.context}</p>
+            <div className="grid gap-3 md:grid-cols-3">
+              {scenario.choices.map((choice, idx) => (
+                <div
+                  key={choice}
+                  className={`rounded-lg border p-4 text-sm ${
+                    idx === scenario.correct
+                      ? 'border-neon/60 bg-neon/10 text-neon'
+                      : 'border-steel/30 bg-slateblue/30 text-slate-200'
+                  }`}
+                >
+                  {choice}
+                </div>
+              ))}
+            </div>
+          </article>
+        </Section>
+
+        <Section id="phishing" subtitle="Phishing Program" title="Operational Resilience Metrics">
+          <div className="grid md:grid-cols-3 gap-5">
+            {metrics.map((item) => (
+              <div key={item.label} className="glass-card rounded-xl p-7">
+                <p className="text-steel uppercase tracking-wider text-xs mb-4">{item.label}</p>
+                <p className="text-4xl font-semibold mb-3">{item.value}</p>
+                <p className="text-neon text-sm">{item.trend}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="dashboard" subtitle="Metrics Dashboard" title="Executive Performance Snapshot">
+          <div className="grid md:grid-cols-3 gap-5">
+            {dashboard.map((card) => (
+              <div key={card.title} className="glass-card rounded-xl p-7">
+                <h3 className="text-lg font-semibold mb-4">{card.title}</h3>
+                <p className="text-4xl font-semibold mb-3">{card.value}</p>
+                <p className="text-steel text-sm">{card.detail}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="plan" subtitle="30-60-90 Day Plan" title="Execution Timeline">
+          <div className="space-y-4">
+            {timeline.map((item, index) => (
+              <div key={item.phase} className="glass-card rounded-xl p-6 flex gap-5 items-start">
+                <div className="h-9 w-9 rounded-full border border-neon/40 text-neon grid place-items-center text-sm font-semibold">
+                  {index + 1}
+                </div>
+                <div>
+                  <p className="text-lg font-semibold mb-2">{item.phase}</p>
+                  <p className="text-steel leading-relaxed">{item.plan}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="culture" subtitle="Security Culture" title="From Awareness to Behavioral Identity">
+          <blockquote className="glass-card rounded-2xl p-8 md:p-10 text-xl md:text-2xl font-medium leading-relaxed">
+            “The goal is not compliance — it is instinctive secure behavior at scale.”
+          </blockquote>
+        </Section>
+
+        <section className="py-24">
+          <div className="mx-auto max-w-4xl px-6">
+            <div className="glass-card rounded-2xl p-10 md:p-14 text-center">
+              <p className="text-xs uppercase tracking-[0.28em] text-steel mb-5">Call to Action</p>
+              <h2 className="text-3xl md:text-5xl font-semibold mb-5">Day One Security Awareness Leadership</h2>
+              <p className="text-steel max-w-2xl mx-auto">
+                Ready to establish a measurable, behavior-focused security awareness program aligned to global financial priorities.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
